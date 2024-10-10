@@ -1,0 +1,25 @@
+<odoo>
+
+    <menuitem id="document_menu_root" name="Enspd Ges Doc">
+
+        <menuitem id="menu_diplomes" name="Diplomes">
+
+            <menuitem id="show_menu_diplomes" action="view_document_diplome_property_action"/>
+
+        </menuitem>
+
+        <menuitem id="menu_certificats" name="Certificats Scolarite">
+
+            <menuitem id="show_menu_certificats" action="view_document_certificate_property_action"/>
+
+        </menuitem>
+
+        <menuitem id="menu_releves" name="Releves de notes">
+
+            <menuitem id="show_menu_releves" action="view_document_relevate_property_action"/>
+
+        </menuitem>
+
+    </menuitem>
+
+</odoo>

@@ -1,0 +1,121 @@
+<odoo>
+    <!--
+        RECORD VIEWS
+    -->
+
+    <record id="view_diplome_tree" model="ir.ui.view">
+        <field name="name">Liste des diplômes</field>
+        <field name="model">document_diplome</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="nom_diplome" string="Nom"/>
+                <field name="is_sign" string="signe ?"/>
+                <field name="date_obtention" string="Date d'obtention"/>
+
+            </tree>
+
+        </field>
+    </record>
+
+    <record id="view_diplome_form" model="ir.ui.view">
+        <field name="name">Informations sur le diplôme</field>
+        <field name="model">document_diplome</field>
+        <field name="arch" type="xml">
+
+            <form>
+                <sheet>
+                    <h1>
+                        <field placeholder="matricule du proprietaire" name="matricule"/>
+                    </h1>
+                    <group>
+                        <group>
+                            <field name="nom_diplome"/>
+                            <field name="etablissement"/>
+                            <field name="date_obtention"/>
+                            <field string="Mention" name="mention" placeholder=" Mention Obtenue"/>
+                            <field name="is_sign" string="Etat Signature "/>
+
+                        </group>
+                        <group>
+                            <group>
+                                <field name="specialite" string="Spécialité"/>
+                                <field name="cycle" string="Cycle"/>
+                                <field name="file" string="Fichier"/>
+                            </group>
+                            <group>
+                                <field name="signature" widget="image" readonly="1"
+                                       style="width : 80px; height : 80px;"/>
+
+                            </group>
+                            <group>
+                                <field name="qrcode" widget="image" readonly="1"
+                                       style="width : 80px; height : 80px;"/>
+
+                            </group>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Signature"  groups="Enspd_Dms.group_administrateur">
+
+                                <div style="">
+                                    <field name="signature" widget="digital_signature" string="Signature"/>
+                                </div>
+                                <button name="action_sign" type="object" string="Signer"/>
+
+
+                        </page>
+                        <page string="Autres">
+                            <group>
+
+                                <field name="date_emission"/>
+                                <field name="create_date"/>
+                                <field name="write_date"/>
+                                <field name="date_derniere_modif"/>
+                                <field name="write_uid"/>
+                                <field name="file_path"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <!--
+        RECORD ACTIONS
+    -->
+
+    <!--
+       Diplomes
+   -->
+    <record id="view_document_diplome_property_action" model="ir.actions.act_window">
+        <field name="name">Gestion des diplômes</field>
+        <field name="res_model">document_diplome</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_id" ref="view_diplome_tree"/>
+
+    </record>
+
+    <!--
+        Certificat de scolarité
+    -->
+    <record id="view_document_certificate_property_action" model="ir.actions.act_window">
+        <field name="name">Gestion des certificats</field>
+        <field name="res_model">document_certificat_scolarite</field>
+        <field name="view_mode">tree,form</field>
+
+    </record>
+
+    <!--
+        Relevé de notes
+    -->
+
+    <record id="view_document_relevate_property_action" model="ir.actions.act_window">
+        <field name="name">Gestion des releves de note</field>
+        <field name="res_model">document_releve_de_note</field>
+        <field name="view_mode">tree,form</field>
+
+    </record>
+
+</odoo>
