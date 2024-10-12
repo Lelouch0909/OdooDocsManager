@@ -12,7 +12,15 @@ class Diplome(models.Model):
     _description = 'Diplome'
     _order = 'date_emission desc'
 
-    matricule = fields.Char(string='matricule du proprietaire', required=True)
+    matricule = fields.Many2one(
+        'etudiant',
+        string="Matricule de l'Étudiant",
+        required=True,
+        domain="[('matricule', '!=', False)]",
+        help="Sélectionner le matricule de l'étudiant"
+    )
+
+    nom_etudiant = fields.Char(string='Nom de l\'Étudiant', required=True)
 
     nom_diplome = fields.Char(string='Nom du Diplôme', required=True, default='Diplome d\'ingenieur')
 
@@ -31,16 +39,23 @@ class Diplome(models.Model):
 
     specialite = fields.Selection([
         ('glo', 'ingenieurie logicielle'),
-        ('gt', 'ingenieurie reseau'),
-        ('ge', 'ingenieurie électronique'),
-        ('gc', 'ingenieurie des communications'),
+        ('grt', 'ingenieurie reseau'),
+        ('gesi', 'ingenieurie  électrique et systemes intelligents'),
+        ('ge', 'ingenieurie energétique'),
+        ('gc', 'ingenieurie civile'),
+        ('gam', 'ingenieurie automobile et mécatronique'),
         ('gm', 'ingenieurie mecanique'),
         ('gp', 'ingenieurie des procedes'),
-    ], required=True)
+    ], required=True, readonly=True)
 
-    cycle = fields.Char(string='Cycle', required=True)
-
-    date_emission = fields.Date(string='Date d\'Emission', default=fields.Datetime.now, required=True)
+    cycle = fields.Selection([
+        ('ingenieur', 'Ingénieur'),
+        ('science_de_l_ingenieur', 'Science de l\'Ingénieur'),
+    ],
+        string="Cycle",
+        required=True,
+    )
+    date_emission = fields.Date(string='Date d\'Emission', default=fields.Datetime.now)
 
     create_date = fields.Datetime('create_date', readonly=True)
 
@@ -81,6 +96,13 @@ class Diplome(models.Model):
             record.file_path = f"{base_url}{file_path}"
             FileModification.add_qrcode_to_pdf(record, vals.get('file'), file_path, [10, 380])
         return record
+
+    @api.onchange('matricule')
+    def _onchange_matricule_etudiant(self):
+        if self.matricule:
+            self.cycle = self.matricule.cycle
+            self.specialite = self.matricule.filiere
+            self.nom_etudiant = self.matricule.nom_etudiant
 
     @api.onchange('signature')
     def _onchange_signature(self):

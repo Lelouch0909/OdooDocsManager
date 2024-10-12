@@ -3,33 +3,45 @@ from odoo.exceptions import ValidationError, UserError
 
 
 class Etudiant(models.Model):
-    _inherit = 'res.users'
+    _name = 'etudiant'
+    _description = 'Etudiant'
+    _order = 'date_entree desc'
+    _sql_constraints = [
+        ('matricule_unique', 'UNIQUE(matricule)', 'Le matricule doit être unique.')
+    ]
 
-    matricule = fields.Char(string='Matricule', required=True)
-    motdepasse = fields.Char(string='Mot de passe', required=True)
+    nom_etudiant = fields.Char(string='Nom', required=True)
+
+    matricule = fields.Char(string='Matricule', required=True, unique=True)
 
     date_entree = fields.Datetime(string='Date de Dernière Modification', readonly=True,
                                   default=fields.Datetime.now)
+    diplome_ids = fields.One2many('document_diplome', 'etudiant_id', string="Diplômes")
+
+    filiere = fields.Selection([
+        ('glo', 'génie logicielle'),
+        ('grt', 'génie reseau'),
+        ('gesi', 'génie électrique et systemes intelligents'),
+        ('ge', 'génie energétique'),
+        ('gam', 'génie automobile et mécatronique'),
+        ('gc', 'genie civile'),
+        ('gm', 'génie mécanique'),
+        ('gp', 'génie des procédés'),
+    ], required=True)
+
+
+
+    cycle = fields.Selection([
+        ('ingenieur', 'Ingénieur'),
+        ('science_de_l_ingenieur', 'Science de l\'Ingénieur'),
+    ],
+        string="Cycle",
+        required=True
+    )
     niveau_academique = fields.Selection([
         ('1', '1'),
         ('2', '2'),
         ('3', '3'),
         ('4', '4'),
         ('5', '5'),
-    ], required=True)
-
-    @api.model
-    def create(self, vals):
-        vals['login'] = vals.get('matricule')
-        vals['password'] = vals.get('motdepasse')
-        # Vérification si un mot de passe a été fourni, sinon générer un mot de passe par défaut
-        if not vals.get('login') or not vals.get('password'):
-            ValidationError('pas de matricule ou de mot de passe fournit')
-
-        etudiant = super(Etudiant, self).create(vals)
-
-        group_etudiant = self.env.ref('Enspd_Dms.group_etudiant')
-
-        etudiant.groups_id = [(4, group_etudiant.id)]
-
-        return etudiant
+    ], required=True, default='1')
