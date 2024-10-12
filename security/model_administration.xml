@@ -16,4 +16,8 @@
         <field name="category_id" ref="Enspd_Dms.module_category_custom_module_category"/>
     </record>
 
+    <record id="group_etudiant" model="res.groups">
+        <field name="name">Etudiants</field>
+        <field name="category_id" ref="Enspd_Dms.module_category_custom_module_category"/>
+    </record>
 </odoo>

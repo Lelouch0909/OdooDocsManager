@@ -5,29 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4605108f-0c65-4a25-b965-2ac8d3569cd6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/Enspd_Dms.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/__manifest__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/DiplomeController.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/FileController.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/CertificatDeScolarite.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/Diplome.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/ReleveDeNote.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/Users.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/security/ir.model.access.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/security/model_administration.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/FileModification.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/FileStorage.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/document_menu.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/document_property_views.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vscode/coding-times.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/Etudiant.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/ImportEtudiant.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/Users.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/Users.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/security/ir.model.access.csv" beforeDir="false" afterPath="$PROJECT_DIR$/security/ir.model.access.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/security/model_administration.xml" beforeDir="false" afterPath="$PROJECT_DIR$/security/model_administration.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,9 +26,32 @@
       </list>
     </option>
   </component>
+  <component name="FlaskConsoleOptions" custom-start-script="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))">
+    <envs>
+      <env key="FLASK_APP" value="app" />
+    </envs>
+    <option name="myCustomStartScript" value="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))" />
+    <option name="myEnvs">
+      <map>
+        <entry key="FLASK_APP" value="app" />
+      </map>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Lelouch0909"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Lelouch0909/OdooDocsManager.git",
+    "accountId": "a87a8006-9048-4bdf-ae67-0a08f29793b5"
+  }
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
@@ -55,19 +63,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/lelouch/odoo/projectModule/Enspd_Dms/services&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "/home/lelouch/odoo/projectModule/Enspd_Dms/services",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/services" />
@@ -75,6 +85,7 @@
       <recent name="$PROJECT_DIR$/models" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/models" />
       <recent name="$PROJECT_DIR$/controllers" />
     </key>
   </component>
@@ -100,11 +111,14 @@
       <workItem from="1728381677233" duration="583000" />
       <workItem from="1728416488078" duration="29722000" />
       <workItem from="1728530194717" duration="14623000" />
-      <workItem from="1728574098232" duration="286000" />
+      <workItem from="1728574098232" duration="8713000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>

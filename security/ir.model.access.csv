@@ -3,3 +3,4 @@ access_certificat_scolarite,access_certificat_scolarite,model_document_certifica
 access_releve_de_note,access_releve_de_note,model_document_releve_de_note,base.group_user,1,1,1,1
 access_diplome_administrateur,access_diplome_administrateur,model_document_diplome,Enspd_Dms.group_administrateur,1,1,1,1
 access_diplome_gestionnaire,access_diplome_gestionnaire,model_document_diplome,Enspd_Dms.group_gestionnaire,1,1,1,0
+access_diplome_etudiant,access_diplome_etudiant,model_document_diplome,Enspd_Dms.group_etudiant,1,0,0,0
