@@ -5,8 +5,8 @@ class Users(models.Model):
     _inherit = 'res.users'
 
     role = fields.Selection(
-        [('administrateur', 'Administrateur'), ('gestionnaire', 'Gestionnaire'), ('etudiant', 'Etudiant')],
-        string='Rôle', required=True)
+        [('administrateur', 'Administrateur'), ('gestionnaire', 'Gestionnaire')],
+        string='Rôle', required=True, default='gestionnaire',)
 
     @api.model
     def create(self, vals):
@@ -17,9 +17,6 @@ class Users(models.Model):
             user.groups_id = [(4, group_administrateur.id)]
         elif vals.get('role') == 'gestionnaire':
             group_gestionnaire = self.env.ref('Enspd_Dms.group_gestionnaire')
-            user.groups_id = [(4, group_gestionnaire.id)]
-        elif vals.get('role') == 'etudiant':
-            group_gestionnaire = self.env.ref('Enspd_Dms.group_etudiant')
             user.groups_id = [(4, group_gestionnaire.id)]
 
         return user

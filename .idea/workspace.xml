@@ -4,15 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4605108f-0c65-4a25-b965-2ac8d3569cd6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.vscode/coding-times.db" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/Etudiant.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/ImportEtudiant.py" afterDir="false" />
+    <list default="true" id="4605108f-0c65-4a25-b965-2ac8d3569cd6" name="Changes" comment="decision de auth change">
+      <change afterPath="$PROJECT_DIR$/models/ListeEtudiant.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/AuthService.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/Etudiant.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/Etudiant.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/Users.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/Users.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/security/ir.model.access.csv" beforeDir="false" afterPath="$PROJECT_DIR$/security/ir.model.access.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/security/model_administration.xml" beforeDir="false" afterPath="$PROJECT_DIR$/security/model_administration.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/document_menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/views/document_menu.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/document_property_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/views/document_property_views.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,18 +42,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "Lelouch0909"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Lelouch0909&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Lelouch0909/OdooDocsManager.git",
-    "accountId": "a87a8006-9048-4bdf-ae67-0a08f29793b5"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Lelouch0909/OdooDocsManager.git&quot;,
+    &quot;accountId&quot;: &quot;a87a8006-9048-4bdf-ae67-0a08f29793b5&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
@@ -63,21 +65,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "/home/lelouch/odoo/projectModule/Enspd_Dms/services",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/lelouch/decrypt.py&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/services" />
@@ -112,7 +114,20 @@
       <workItem from="1728416488078" duration="29722000" />
       <workItem from="1728530194717" duration="14623000" />
       <workItem from="1728574098232" duration="8713000" />
+      <workItem from="1728977706491" duration="27000" />
+      <workItem from="1730260189009" duration="4150000" />
+      <workItem from="1730305844392" duration="9199000" />
+      <workItem from="1730328327379" duration="908000" />
     </task>
+    <task id="LOCAL-00001" summary="decision de auth change">
+      <option name="closed" value="true" />
+      <created>1728749304088</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1728749304088</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -120,5 +135,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="decision de auth change" />
+    <option name="LAST_COMMIT_MESSAGE" value="decision de auth change" />
   </component>
 </project>

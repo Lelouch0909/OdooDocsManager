@@ -6,17 +6,20 @@ class Etudiant(models.Model):
     _name = 'etudiant'
     _description = 'Etudiant'
     _order = 'date_entree desc'
+
     _sql_constraints = [
         ('matricule_unique', 'UNIQUE(matricule)', 'Le matricule doit être unique.')
     ]
 
     nom_etudiant = fields.Char(string='Nom', required=True)
 
-    matricule = fields.Char(string='Matricule', required=True, unique=True)
+    matricule = fields.Char(string='Matricule', required=True)
 
     date_entree = fields.Datetime(string='Date de Dernière Modification', readonly=True,
                                   default=fields.Datetime.now)
-    diplome_ids = fields.One2many('document_diplome', 'etudiant_id', string="Diplômes")
+    diplome_ids = fields.One2many('document_diplome', 'matricule', string="Diplômes")
+    releve_de_note_ids = fields.One2many('document_releve_de_note', 'matricule', string="Relevés de notes")
+    certificat_de_scolarite_ids = fields.One2many('document_certificat_scolarite', 'matricule', string="Certificats")
 
     filiere = fields.Selection([
         ('glo', 'génie logicielle'),
@@ -27,9 +30,8 @@ class Etudiant(models.Model):
         ('gc', 'genie civile'),
         ('gm', 'génie mécanique'),
         ('gp', 'génie des procédés'),
+        ('tco', 'tronc commun'),
     ], required=True)
-
-
 
     cycle = fields.Selection([
         ('ingenieur', 'Ingénieur'),

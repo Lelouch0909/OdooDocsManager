@@ -2,22 +2,25 @@
 
     <menuitem id="document_menu_root" name="Enspd Ges Doc">
 
-        <menuitem id="menu_diplomes" name="Diplomes">
+        <menuitem id="menu_diplomes" name="Diplomes" action="view_document_diplome_property_action">
 
-            <menuitem id="show_menu_diplomes" action="view_document_diplome_property_action"/>
-
-        </menuitem>
-
-        <menuitem id="menu_certificats" name="Certificats Scolarite">
-
-            <menuitem id="show_menu_certificats" action="view_document_certificate_property_action"/>
 
         </menuitem>
 
-        <menuitem id="menu_releves" name="Releves de notes">
+        <menuitem id="menu_certificats" name="Certificats Scolarite" action="view_document_certificate_property_action">
 
-            <menuitem id="show_menu_releves" action="view_document_relevate_property_action"/>
 
+        </menuitem>
+
+        <menuitem id="menu_releves" name="Releves de notes" action="view_document_relevate_property_action">
+
+
+        </menuitem>
+
+        <menuitem id="menu_etudiants" name="Gestion des Etudiants" >
+
+            <menuitem id="menu_ajout_etudiant" name="Ajouter des étudiants" action="view_document_list_etudiant_property_action"/>
+            <menuitem id="menu_liste_etudiant" name="Liste des étudiants" action="view_document_etudiant_property_action"/>
         </menuitem>
 
     </menuitem>

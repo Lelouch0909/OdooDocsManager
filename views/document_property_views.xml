@@ -3,6 +3,7 @@
         RECORD VIEWS
     -->
 
+    <!--    Diplomes-->
     <record id="view_diplome_tree" model="ir.ui.view">
         <field name="name">Liste des diplômes</field>
         <field name="model">document_diplome</field>
@@ -25,10 +26,11 @@
             <form>
                 <sheet>
                     <h1>
-                        <field placeholder="Selectionnez le matricule de l'étudiant" name="matricule" options="{'no_create': True}"/>
+                        <field placeholder="Selectionnez le matricule de l'étudiant" name="matricule"
+                               options="{'no_create': True}"/>
                     </h1>
                     <h2>
-                        <field placeholder="matricule du proprietaire" name="matricule"/>
+                        <field placeholder=" nom de l'étudiant" name="nom_etudiant" readonly="1"/>
                     </h2>
                     <group>
                         <group>
@@ -58,12 +60,12 @@
                         </group>
                     </group>
                     <notebook>
-                        <page string="Signature"  groups="Enspd_Dms.group_administrateur">
+                        <page string="Signature" groups="Enspd_Dms.group_administrateur">
 
-                                <div style="">
-                                    <field name="signature" widget="digital_signature" string="Signature"/>
-                                </div>
-                                <button name="action_sign" type="object" string="Signer"/>
+                            <div style="">
+                                <field name="signature" widget="digital_signature" string="Signature"/>
+                            </div>
+                            <button name="action_sign" type="object" string="Signer"/>
 
 
                         </page>
@@ -83,6 +85,7 @@
             </form>
         </field>
     </record>
+
 
 
     <!--
@@ -121,4 +124,26 @@
 
     </record>
 
+    <!--
+       Creer Etudiants
+   -->
+
+    <record id="view_document_list_etudiant_property_action" model="ir.actions.act_window">
+        <field name="name">Ajouter des etudiants</field>
+        <field name="res_model">liste_etudiant</field>
+        <field name="view_mode">form</field>
+
+    </record>
+
+
+    <!--
+       Lister Etudiants
+   -->
+
+    <record id="view_document_etudiant_property_action" model="ir.actions.act_window">
+        <field name="name">Gestion des etudiants</field>
+        <field name="res_model">etudiant</field>
+        <field name="view_mode">tree,form</field>
+
+    </record>
 </odoo>
