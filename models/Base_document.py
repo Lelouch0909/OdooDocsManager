@@ -1,9 +1,14 @@
+import io
 import logging
 
 from odoo import models, fields, api
 from odoo.exceptions import UserError, ValidationError
 import base64
 
+from PIL import Image
+
+import fitz
+from . import Etudiant
 from ..services.FileModification import FileModification
 from ..services.FileStorage import FileStorage
 
@@ -44,20 +49,55 @@ class Base_document(models.AbstractModel):
     file = fields.Binary(string="Fichier PDF", required=True)
 
     file_path = fields.Char(string='Chemin du Fichier', required=True, readonly=True, default='hidden')
+    preview_image = fields.Image("Prévisualisation", compute="_compute_preview_image",default=False)
+
+    @api.depends('file')
+    def _compute_preview_image(self):
+        for record in self:
+            if record.file:
+                try:
+                    pdf_data = base64.b64decode(record.file)
+
+                    pdf_document = fitz.open("pdf", pdf_data)
+
+                    page = pdf_document[0]
+                    pix = page.get_pixmap()
+
+                    image = Image.frombytes("RGB", [pix.width, pix.height], pix.samples)
+
+                    image.thumbnail((128, 128))
+
+                    image_bytes = io.BytesIO()
+                    image.save(image_bytes, format="PNG")
+
+                    record.preview_image = base64.b64encode(image_bytes.getvalue())
+
+                except Exception as e:
+                    record.preview_image = False
+                    logging.error(f"Erreur lors de la conversion du PDF en image : {e}")
+
+    def use_last_signature(self):
+        if self.env.user.has_group('Enspd_Dms.group_administrateur'):
+            for record in self:
+                record.write({
+                    'signature': self.env.user.saved_signature,
+                    'is_sign': True,
+                })
 
     @api.model
     def create(self, vals):
-        logging.warning(f"Entre dans la fonction create, {self.matricule.nom_etudiant}")
-
-        vals.update({"nom_etudiant": self.matricule.nom_etudiant,
-                     "cycle": self.matricule.cycle,
-                     "specialite": self.matricule.filiere})
-        logging.warning(vals.get("nom_etudiant"))
-        logging.warning(vals.get("cycle"))
-        logging.warning(vals.get("matricule"))
-        logging.warning(vals.get("specialite"))
-        record = super(Base_document, self).create(vals)
         child_class_name = self._name
+
+        matricule_id: Etudiant = vals.get('matricule')
+        etudiant = self.env['etudiant'].browse(matricule_id)
+        if child_class_name == 'document_diplome':
+            txt = "specialite"
+        else:
+            txt = "filiere"
+        vals.update({"nom_etudiant": etudiant.nom_etudiant,
+                     "cycle": etudiant.cycle,
+                     txt: etudiant.filiere})
+        record = super(Base_document, self).create(vals)
         if vals.get('file'):
             file_storage = FileStorage(self.env)
             file_name = f"{child_class_name}_{record.id}.pdf"
@@ -83,12 +123,13 @@ class Base_document(models.AbstractModel):
 
     @api.onchange('signature')
     def _onchange_signature(self):
-
         if self.signature and not self.file:
             raise ValidationError("No file provided.")
 
     def action_sign(self):
-        logging.warning("Entre dans la fonction action_sign")
+        child_class_name = self._name
+        user = self.env.user
+
         for record in self:
             if record.signature:
                 positions = {
@@ -101,8 +142,12 @@ class Base_document(models.AbstractModel):
                     'signature': record.signature
                 })
                 if self.signature:
-                    FileModification.add_signature_to_pdf(record, self.file, positions, self.signature)
-
+                    FileModification.add_signature_to_pdf(record, self.file, positions.get(child_class_name),
+                                                          self.signature)
+                if user.saved_signature != self.signature:
+                    user.write({
+                        'saved_signature': self.signature
+                    })
                 else:
                     raise ValidationError("Signature not provided.")
 

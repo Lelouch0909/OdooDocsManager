@@ -53,7 +53,7 @@ class Diplome(models.Model, Base_document):
         ('gam', 'ingenieurie automobile et mécatronique'),
         ('gm', 'ingenieurie mecanique'),
         ('gp', 'ingenieurie des procedes'),
-        ('tco', 'tronc commun'),
+        ('tco', 'none'),
 
     ], required=True, readonly=True)
 
@@ -64,6 +64,3 @@ class Diplome(models.Model, Base_document):
         if self.matricule:
             self.specialite = self.matricule.filiere
 
-    @api.model
-    def create(self, vals):
-        super(Diplome, self).create(vals)

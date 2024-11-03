@@ -6,7 +6,7 @@ class Etudiant(models.Model):
     _name = 'etudiant'
     _description = 'Etudiant'
     _order = 'date_entree desc'
-
+    _rec_name = 'matricule'
     _sql_constraints = [
         ('matricule_unique', 'UNIQUE(matricule)', 'Le matricule doit être unique.')
     ]

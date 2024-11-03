@@ -28,6 +28,8 @@ class ReleveDeNote(models.Model):
         ('gam', 'génie automobile et mécatronique'),
         ('gm', 'génie mécanique'),
         ('gp', 'génie des procédés'),
+        ('tco', 'tronc commun'),
+
     ], required=True)
 
     date_emission = fields.Date(string='Date d\'Emission', default=fields.Datetime.now, required=True)

@@ -9,10 +9,17 @@
         <field name="model">document_diplome</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="nom_diplome" string="Nom"/>
-                <field name="is_sign" string="signe ?"/>
-                <field name="date_obtention" string="Date d'obtention"/>
+                <field name="create_date" string="Date de Création"/>
 
+                <field name="is_sign" string="Signe ?"/>
+                <field name="date_obtention" string="Date d'obtention"/>
+                <field name="nom_etudiant" string="Nom Etudiant"/>
+                <field name="nom_diplome" string="Diplome"/>
+                <field name="cycle" string="Cycle"/>
+                <field name="specialite" string="Spécialité"/>
+
+                <field name="etablissement" string="Etablissement"/>
+                <field name="mention" string="Mention"/>
             </tree>
 
         </field>
@@ -57,10 +64,16 @@
                                        style="width : 80px; height : 80px;"/>
 
                             </group>
+                            <group>
+                                <field name="preview_image" widget="image" readonly="1"
+                                       style="width : 80px; height : 80px;"/>
+
+                            </group>
                         </group>
                     </group>
                     <notebook>
                         <page string="Signature" groups="Enspd_Dms.group_administrateur">
+                            <button name="use_last_signature" type="object" string="Utiliser derniere signature"/>
 
                             <div style="">
                                 <field name="signature" widget="digital_signature" string="Signature"/>
@@ -86,6 +99,229 @@
         </field>
     </record>
 
+    <!-- Vue de recherche -->
+    <record id="view_document_diplome_search" model="ir.ui.view">
+        <field name="name">document_diplome.search</field>
+        <field name="model">document_diplome</field>
+        <field name="arch" type="xml">
+            <search>
+                <filter name="is_signed" string="Signé" domain="[('is_sign', '=', True)]"
+                        context="{'default_is_sign': True}"/>
+                <filter name="not_signed" string="Non Signé" domain="[('is_sign', '=', False)]"
+                        context="{'default_is_sign': False}"/>
+
+                <group expand="1" string="Group By">
+                    <filter string="Etablissement" name="group_by_etablissement"
+                            context="{'group_by': 'etablissement'}"/>
+                    <filter string="nom_etudiant" name="nom_etudiant" context="{'group_by': 'nom_etudiant'}"/>
+                </group>
+                <searchpanel>
+                    <field name="write_uid" string="Ajouter par :" select="multi" icon="fa fa-filter"
+                           enable_counters="1"/>
+
+                    <field name="matricule" string="matricule" enable_counters="1" icon="fa fa-user"/>
+
+                </searchpanel>
+            </search>
+        </field>
+    </record>
+
+
+    <record id="view_diplome_kanban" model="ir.ui.view">
+        <field name="name">document diplome</field>
+        <field name="model">document_diplome</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="matricule"/>
+                <field name="nom_etudiant"/>
+                <field name="preview_image"/>
+                <field name="create_date" string="Date de Création"/>
+                <field name="is_sign" string="Signe ?"/>
+                <field name="date_obtention" string="Date d'obtention"/>
+                <field name="nom_diplome" string="Diplome"/>
+                <field name="cycle" string="Cycle"/>
+                <field name="specialite" string="Spécialité"/>
+                <field name="etablissement" string="Etablissement"/>
+                <field name="mention" string="Mention"/>
+
+                <templates>
+
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click oe_kanban_card  d-flex flex-row justify-content-around g-0
+                         p-1 overflow-hidden no-wrap  bg-white"
+                             t-att-class="'border ' + (record.is_sign.raw_value ? 'border-success' : 'border-danger')">
+
+                            <div class=" flex ">
+                                <img class="oe_kanban_image_inner_picture"
+                                     t-att-src="kanban_image('document_diplome', 'preview_image', record.id.value)"
+                                     t-att-alt="record.id.value" t-att-title="record.id.value">
+
+                                </img>
+                            </div>
+                            <div class="flex flex-column o_kanban_details">
+                                <div class="o_kanban_record_title">
+                                    <field name="matricule"/>
+
+                                </div>
+                                <div class="o_kanban_record_subtitle">
+                                    <field name="create_date"/>
+
+                                </div>
+                                <div class="o_kanban_record_body">
+
+                                    <div>
+                                        <field name="nom_etudiant"/>
+
+                                    </div>
+                                    <div>
+                                        <field name="specialite"/>
+
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+
+    <!--  Certificat de scolarite -->
+    <record id="view_certificat_scolarite_form" model="ir.ui.view">
+        <field name="name">Informations sur le certificat de scolarite</field>
+        <field name="model">document_certificat_scolarite</field>
+        <field name="arch" type="xml">
+
+            <form>
+                <sheet>
+                    <h1>
+                        <field placeholder="Selectionnez le matricule de l'étudiant" name="matricule"
+                               options="{'no_create': True}"/>
+                    </h1>
+                    <h2>
+                        <field placeholder=" nom de l'étudiant" name="nom_etudiant" readonly="1"/>
+                    </h2>
+                    <group>
+                        <group>
+                            <field string="annee academique" name="annee_academique" placeholder="Annee academique"/>
+                            <field name="is_sign" string="Etat Signature "/>
+
+                        </group>
+                        <group>
+                            <group>
+                                <field name="cycle" readonly="1"/>
+                                <field name="filiere" readonly="1"/>
+                                <field name="file" string="Fichier"/>
+                            </group>
+                            <group>
+                                <field name="signature" widget="image" readonly="1"
+                                       style="width : 80px; height : 80px;"/>
+
+                            </group>
+                            <group>
+                                <field name="qrcode" widget="image" readonly="1"
+                                       style="width : 80px; height : 80px;"/>
+
+                            </group>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Signature" groups="Enspd_Dms.group_administrateur">
+                            <button name="use_last_signature" type="object" string="Utiliser derniere signature"/>
+
+                            <div style="">
+                                <field name="signature" widget="digital_signature" string="Signature"/>
+                            </div>
+                            <button name="action_sign" type="object" string="Signer"/>
+
+
+                        </page>
+                        <page string="Autres">
+                            <group>
+
+                                <field name="create_date"/>
+                                <field name="write_date"/>
+                                <field name="date_derniere_modif"/>
+                                <field name="write_uid"/>
+                                <field name="file_path"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!--  Releves de notes -->
+    <record id="view_releve_de_note_form" model="ir.ui.view">
+        <field name="name">Informations sur le releve de note</field>
+        <field name="model">document_releve_de_note</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <h1>
+                        <field placeholder="Selectionnez le matricule de l'étudiant" name="matricule"
+                               options="{'no_create': True}"/>
+                    </h1>
+                    <h2>
+                        <field placeholder=" nom de l'étudiant" name="nom_etudiant" readonly="1"/>
+                    </h2>
+                    <group>
+                        <group>
+                            <field string="annee academique" name="annee_academique" placeholder="Annee academique"/>
+                            <field name="is_sign" string="Etat Signature "/>
+
+                        </group>
+                        <group>
+                            <group>
+                                <field name="cycle" readonly="1"/>
+                                <field name="filiere" readonly="1"/>
+                                <field name="file" string="Fichier"/>
+                            </group>
+                            <group>
+                                <field name="signature" widget="image" readonly="1"
+                                       style="width : 80px; height : 80px;"/>
+
+                            </group>
+                            <group>
+                                <field name="qrcode" widget="image" readonly="1"
+                                       style="width : 80px; height : 80px;"/>
+
+                            </group>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Signature" groups="Enspd_Dms.group_administrateur">
+                            <button name="use_last_signature" type="object" string="Utiliser derniere signature"/>
+
+                            <div style="">
+                                <field name="signature" widget="digital_signature" string="Signature"/>
+                            </div>
+                            <button name="action_sign" type="object" string="Signer"/>
+
+
+                        </page>
+                        <page string="Autres">
+                            <group>
+                                <field name="date_emission"/>
+
+                                <field name="create_date"/>
+                                <field name="write_date"/>
+                                <field name="date_derniere_modif"/>
+                                <field name="write_uid"/>
+                                <field name="file_path"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
 
 
     <!--
@@ -94,12 +330,13 @@
 
     <!--
        Diplomes
-   -->
+    -->
     <record id="view_document_diplome_property_action" model="ir.actions.act_window">
         <field name="name">Gestion des diplômes</field>
         <field name="res_model">document_diplome</field>
         <field name="view_mode">kanban,tree,form</field>
-        <field name="view_id" ref="view_diplome_tree"/>
+        <field name="view_id" ref="view_diplome_kanban"/>
+        <field name="search_view_id" ref="view_document_diplome_search"/>
 
     </record>
 
@@ -126,7 +363,7 @@
 
     <!--
        Creer Etudiants
-   -->
+    -->
 
     <record id="view_document_list_etudiant_property_action" model="ir.actions.act_window">
         <field name="name">Ajouter des etudiants</field>
@@ -138,7 +375,7 @@
 
     <!--
        Lister Etudiants
-   -->
+    -->
 
     <record id="view_document_etudiant_property_action" model="ir.actions.act_window">
         <field name="name">Gestion des etudiants</field>

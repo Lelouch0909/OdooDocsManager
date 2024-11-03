@@ -1,3 +1,5 @@
+import base64
+
 from odoo import models, fields, api
 
 
@@ -6,7 +8,8 @@ class Users(models.Model):
 
     role = fields.Selection(
         [('administrateur', 'Administrateur'), ('gestionnaire', 'Gestionnaire')],
-        string='Rôle', required=True, default='gestionnaire',)
+        string='Rôle', required=True, default='gestionnaire', )
+    saved_signature = fields.Binary("Signature enregistrée",default=None)
 
     @api.model
     def create(self, vals):
