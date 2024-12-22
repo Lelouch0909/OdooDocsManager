@@ -24,7 +24,6 @@
 
         </field>
     </record>
-
     <record id="view_diplome_form" model="ir.ui.view">
         <field name="name">Informations sur le diplôme</field>
         <field name="model">document_diplome</field>
@@ -98,8 +97,6 @@
             </form>
         </field>
     </record>
-
-    <!-- Vue de recherche -->
     <record id="view_document_diplome_search" model="ir.ui.view">
         <field name="name">document_diplome.search</field>
         <field name="model">document_diplome</field>
@@ -125,8 +122,6 @@
             </search>
         </field>
     </record>
-
-
     <record id="view_diplome_kanban" model="ir.ui.view">
         <field name="name">document diplome</field>
         <field name="model">document_diplome</field>
@@ -228,6 +223,11 @@
                                        style="width : 80px; height : 80px;"/>
 
                             </group>
+                            <group>
+                                <field name="preview_image" widget="image" readonly="1"
+                                       style="width : 80px; height : 80px;"/>
+
+                            </group>
                         </group>
                     </group>
                     <notebook>
@@ -256,6 +256,113 @@
             </form>
         </field>
     </record>
+    <record id="view_certificat_scolarite_kanban" model="ir.ui.view">
+        <field name="name">document certificat de scolarité</field>
+        <field name="model">document_certificat_scolarite</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="matricule"/>
+                <field name="nom_etudiant"/>
+                <field name="preview_image"/>
+                <field name="create_date" string="Date de Création"/>
+                <field name="is_sign" string="Signe ?"/>
+                <field name="date_emission" string="Date d'Emission"/>
+                <field name="cycle" string="Cycle"/>
+                <field name="filiere" string="Filiere"/>
+                <field name="etablissement" string="Etablissement"/>
+
+                <templates>
+
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click oe_kanban_card  d-flex flex-row justify-content-around g-0
+                         p-1 overflow-hidden no-wrap  bg-white"
+                             t-att-class="'border ' + (record.is_sign.raw_value ? 'border-success' : 'border-danger')">
+
+                            <div class=" flex ">
+                                <img class="oe_kanban_image_inner_picture"
+                                     t-att-src="kanban_image('document_certificat_scolarite', 'preview_image', record.id.value)"
+                                     t-att-alt="record.id.value" t-att-title="record.id.value">
+
+                                </img>
+                            </div>
+                            <div class="flex flex-column o_kanban_details">
+                                <div class="o_kanban_record_title">
+                                    <field name="matricule"/>
+
+                                </div>
+                                <div class="o_kanban_record_subtitle">
+                                    <field name="create_date"/>
+
+                                </div>
+                                <div class="o_kanban_record_body">
+
+                                    <div>
+                                        <field name="nom_etudiant"/>
+
+                                    </div>
+                                    <div>
+                                        <field name="filiere"/>
+
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    <record id="view_certificat_diplome_tree" model="ir.ui.view">
+        <field name="name">Liste des diplômes</field>
+        <field name="model">document_certificat_scolarite</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="create_date" string="Date de Création"/>
+
+                <field name="is_sign" string="Signe ?"/>
+                <field name="date_emission" string="Date d'Emission"/>
+                <field name="nom_etudiant" string="Nom Etudiant"/>
+                <field name="cycle" string="Cycle"/>
+                <field name="filiere" string="Filiere"/>
+
+                <field name="etablissement" string="Etablissement"/>
+                <field name="type" string="Type"/>
+            </tree>
+
+        </field>
+    </record>
+    <record id="view_document_certificat_scolarite_search" model="ir.ui.view">
+        <field name="name">document_certificat_scolarite.search</field>
+        <field name="model">document_certificat_scolarite</field>
+        <field name="arch" type="xml">
+            <search>
+                <filter name="is_signed" string="Signé" domain="[('is_sign', '=', True)]"
+                        context="{'default_is_sign': True}"/>
+                <filter name="not_signed" string="Non Signé" domain="[('is_sign', '=', False)]"
+                        context="{'default_is_sign': False}"/>
+
+                <group expand="1" string="Group By">
+
+                    <filter string="filiere" name="group_by_filiere"
+                            context="{'group_by': 'filiere'}"/>
+                    <filter string="annee academique" name="group_by_annee_academique"
+                            context="{'group_by': 'annee_academique'}"/>
+                </group>
+                <searchpanel>
+                    <field name="write_uid" string="Ajouter par :" select="multi" icon="fa fa-filter"
+                           enable_counters="1"/>
+
+                    <field name="matricule" string="matricule" enable_counters="1" icon="fa fa-user"/>
+
+                </searchpanel>
+            </search>
+        </field>
+    </record>
+
 
     <!--  Releves de notes -->
     <record id="view_releve_de_note_form" model="ir.ui.view">
@@ -274,6 +381,7 @@
                     <group>
                         <group>
                             <field string="annee academique" name="annee_academique" placeholder="Annee academique"/>
+                            <field string="semestre" name="semestre" />
                             <field name="is_sign" string="Etat Signature "/>
 
                         </group>
@@ -290,6 +398,11 @@
                             </group>
                             <group>
                                 <field name="qrcode" widget="image" readonly="1"
+                                       style="width : 80px; height : 80px;"/>
+
+                            </group>
+                            <group>
+                                <field name="preview_image" widget="image" readonly="1"
                                        style="width : 80px; height : 80px;"/>
 
                             </group>
@@ -322,7 +435,166 @@
             </form>
         </field>
     </record>
+    <record id="view_releve_de_note_kanban" model="ir.ui.view">
+        <field name="name">document releve de note</field>
+        <field name="model">document_releve_de_note</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="matricule"/>
+                <field name="nom_etudiant"/>
+                <field name="preview_image"/>
+                <field name="create_date" string="Date de Création"/>
+                <field name="is_sign" string="Signe ?"/>
+                <field name="annee_academique" string="Année Académique"/>
+                <field name="semestre" string="Semestre"/>
+                <field name="cycle" string="Cycle"/>
+                <field name="filiere" string="Filiere"/>
+                <field name="etablissement" string="Etablissement"/>
+                <field name="type" string="Type"/>
 
+                <templates>
+
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click oe_kanban_card  d-flex flex-row justify-content-around g-0
+                         p-1 overflow-hidden no-wrap  bg-white"
+                             t-att-class="'border ' + (record.is_sign.raw_value ? 'border-success' : 'border-danger')">
+
+                            <div class=" flex ">
+                                <img class="oe_kanban_image_inner_picture"
+                                     t-att-src="kanban_image('document_releve_de_note', 'preview_image', record.id.value)"
+                                     t-att-alt="record.id.value" t-att-title="record.id.value">
+
+                                </img>
+                            </div>
+                            <div class="flex flex-column o_kanban_details">
+                                <div class="o_kanban_record_title">
+                                    <field name="matricule"/>
+
+                                </div>
+                                <div class="o_kanban_record_subtitle">
+                                    <field name="create_date"/>
+
+                                </div>
+                                <div class="o_kanban_record_body">
+
+                                    <div>
+                                        <field name="nom_etudiant"/>
+
+                                    </div>
+                                    <div>
+                                        <field name="filiere"/>
+
+                                    </div>
+                                    <div>Semestre :
+                                        <field name="semestre"/>
+
+                                    </div>
+
+
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    <record id="view_releve_de_note_tree" model="ir.ui.view">
+        <field name="name">Liste des diplômes</field>
+        <field name="model">document_releve_de_note</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="create_date" string="Date de Création"/>
+
+                <field name="is_sign" string="Signe ?"/>
+                <field name="nom_etudiant" string="Nom Etudiant"/>
+                <field name="cycle" string="Cycle"/>
+                <field name="filiere" string="Filiere"/>
+                <field name="annee_academique" string="Année Académique"/>
+
+                <field name="semestre" string="Semestre"/>
+
+                <field name="etablissement" string="Etablissement"/>
+                <field name="type" string="Type"/>
+            </tree>
+
+        </field>
+    </record>
+    <record id="view_document_releve_de_note_search" model="ir.ui.view">
+        <field name="name">document_releve_de_note.search</field>
+        <field name="model">document_releve_de_note</field>
+        <field name="arch" type="xml">
+            <search>
+                <filter name="is_signed" string="Signé" domain="[('is_sign', '=', True)]"
+                        context="{'default_is_sign': True}"/>
+                <filter name="not_signed" string="Non Signé" domain="[('is_sign', '=', False)]"
+                        context="{'default_is_sign': False}"/>
+
+                <group expand="1" string="Group By">
+                    <filter string="semestre" name="group_by_semestre"
+                            context="{'group_by': 'semestre'}"/>
+                    <filter string="filiere" name="group_by_filiere"
+                            context="{'group_by': 'filiere'}"/>
+                    <filter string="annee academique" name="group_by_annee_academique"
+                            context="{'group_by': 'annee_academique'}"/>
+                </group>
+                <searchpanel>
+                    <field name="write_uid" string="Ajouter par :" select="multi" icon="fa fa-filter"
+                           enable_counters="1"/>
+
+                    <field name="matricule" string="matricule" enable_counters="1" icon="fa fa-user"/>
+
+                </searchpanel>
+            </search>
+        </field>
+    </record>
+
+    <!--Etudiants -->
+    <record id="view_etudiant_tree" model="ir.ui.view">
+        <field name="name">Liste des Etudiants</field>
+        <field name="model">etudiant</field>
+        <field name="arch" type="xml">
+            <tree>
+
+                <field name="matricule" string="Matricule"/>
+                <field name="nom_etudiant" string="Nom Etudiant"/>
+                <!-- <field name="date_entree" string="Date d'Entrée"/> -->
+
+                <field name="cycle" string="Cycle"/>
+                <field name="filiere" string="Filiere"/>
+                <field name="niveau_academique" string="Niveau Académique"/>
+
+
+            </tree>
+
+        </field>
+    </record>
+    <record id="view_etudiant_search" model="ir.ui.view">
+        <field name="name">etudiant.search</field>
+        <field name="model">etudiant</field>
+        <field name="arch" type="xml">
+            <search>
+
+                <group expand="1" string="Group By">
+
+                    <filter name="cycle" string="Cycle"
+                            context="{'group_by': 'cycle'}"/>
+
+                    <filter string="filiere" name="group_by_filiere"
+                            context="{'group_by': 'filiere'}"/>
+                    <filter string="niveau academique" name="group_by_niveau_academique"
+                            context="{'group_by': 'niveau_academique'}"/>
+                </group>
+                <searchpanel>
+                    <field name="write_uid" string="Ajouter par :" select="multi" icon="fa fa-filter"
+                           enable_counters="1"/>
+                </searchpanel>
+            </search>
+        </field>
+    </record>
 
     <!--
         RECORD ACTIONS
@@ -346,7 +618,9 @@
     <record id="view_document_certificate_property_action" model="ir.actions.act_window">
         <field name="name">Gestion des certificats</field>
         <field name="res_model">document_certificat_scolarite</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_id" ref="view_certificat_scolarite_kanban"/>
+        <field name="search_view_id" ref="view_document_certificat_scolarite_search"/>
 
     </record>
 
@@ -357,7 +631,9 @@
     <record id="view_document_relevate_property_action" model="ir.actions.act_window">
         <field name="name">Gestion des releves de note</field>
         <field name="res_model">document_releve_de_note</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_id" ref="view_releve_de_note_kanban"/>
+        <field name="search_view_id" ref="view_document_releve_de_note_search"/>
 
     </record>
 
@@ -381,6 +657,8 @@
         <field name="name">Gestion des etudiants</field>
         <field name="res_model">etudiant</field>
         <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_etudiant_tree"/>
+        <field name="search_view_id" ref="view_etudiant_search"/>
 
     </record>
 </odoo>

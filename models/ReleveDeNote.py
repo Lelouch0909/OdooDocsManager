@@ -22,13 +22,14 @@ class ReleveDeNote(models.Model):
     annee_academique = fields.Char(string='Année Académique', required=True)
 
     filiere = fields.Selection([
-        ('git', 'genie informatique et telecommunications'),
         ('gesi', 'génie électrique et systemes intelligents'),
         ('ge', 'génie energétique'),
         ('gam', 'génie automobile et mécatronique'),
         ('gm', 'génie mécanique'),
         ('gp', 'génie des procédés'),
         ('tco', 'tronc commun'),
+        ('glo','genie logicielle'),
+        ('grt', 'genie reseau et telecom'),
 
     ], required=True)
 

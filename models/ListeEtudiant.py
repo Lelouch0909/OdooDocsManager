@@ -33,7 +33,7 @@ class ListeEtudiant(models.Model):
 
     ], required=True)
 
-    file = fields.Binary(string="Fichier PDF", required=True)
+    file = fields.Binary(string="Fichier Excel", required=True)
 
     cycle = fields.Selection([
         ('ingenieur', 'Ingénieur'),

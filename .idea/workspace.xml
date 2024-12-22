@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4605108f-0c65-4a25-b965-2ac8d3569cd6" name="Changes" comment="decision de auth change">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Base_document.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/Base_document.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/CertificatDeScolarite.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/CertificatDeScolarite.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Diplome.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/Diplome.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Etudiant.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/Etudiant.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/ReleveDeNote.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/ReleveDeNote.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Users.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/Users.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/security/ir.model.access.csv" beforeDir="false" afterPath="$PROJECT_DIR$/security/ir.model.access.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/document_property_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/views/document_property_views.xml" afterDir="false" />
-    </list>
+    <list default="true" id="4605108f-0c65-4a25-b965-2ac8d3569cd6" name="Changes" comment="decision de auth change" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -69,19 +59,20 @@
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "/home/lelouch/decrypt.py",
+    "git-widget-placeholder": "lelouch",
+    "last_opened_file_path": "/home/lelouch/odoo",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/controllers" />
       <recent name="$PROJECT_DIR$/services" />
       <recent name="$PROJECT_DIR$/security" />
       <recent name="$PROJECT_DIR$/models" />
@@ -124,6 +115,19 @@
       <workItem from="1730394242343" duration="23219000" />
       <workItem from="1730449278136" duration="4583000" />
       <workItem from="1730548269859" duration="27892000" />
+      <workItem from="1730644431407" duration="9660000" />
+      <workItem from="1731020515689" duration="1189000" />
+      <workItem from="1731066705042" duration="54000" />
+      <workItem from="1731177812065" duration="7629000" />
+      <workItem from="1731244928263" duration="3431000" />
+      <workItem from="1731267234081" duration="374000" />
+      <workItem from="1731311512816" duration="5026000" />
+      <workItem from="1731504549875" duration="184000" />
+      <workItem from="1733740722771" duration="4264000" />
+      <workItem from="1733826771987" duration="1380000" />
+      <workItem from="1733828648173" duration="244000" />
+      <workItem from="1733853410942" duration="579000" />
+      <workItem from="1733924264287" duration="359000" />
     </task>
     <task id="LOCAL-00001" summary="decision de auth change">
       <option name="closed" value="true" />

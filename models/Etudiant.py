@@ -31,6 +31,7 @@ class Etudiant(models.Model):
         ('gm', 'génie mécanique'),
         ('gp', 'génie des procédés'),
         ('tco', 'tronc commun'),
+       
     ], required=True)
 
     cycle = fields.Selection([

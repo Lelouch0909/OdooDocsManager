@@ -50,6 +50,8 @@ class Base_document(models.AbstractModel):
 
     file_path = fields.Char(string='Chemin du Fichier', required=True, readonly=True, default='hidden')
     preview_image = fields.Image("Prévisualisation", compute="_compute_preview_image",default=False)
+    etablissement = fields.Char(string='Etablissement', required=True, readonly=True,
+                            default='Ecole Nationale Supérieure Polytechnique de Douala')
 
     @api.depends('file')
     def _compute_preview_image(self):
@@ -79,10 +81,15 @@ class Base_document(models.AbstractModel):
     def use_last_signature(self):
         if self.env.user.has_group('Enspd_Dms.group_administrateur'):
             for record in self:
-                record.write({
-                    'signature': self.env.user.saved_signature,
-                    'is_sign': True,
-                })
+                if self.env.user.saved_signature:
+                    record.write({
+                        'signature': self.env.user.saved_signature,
+                        'is_sign': True,
+                    })
+                    self.action_sign()
+                else :
+                    raise UserError('Vous devez d\'abord signer le document')
+
 
     @api.model
     def create(self, vals):
@@ -148,8 +155,11 @@ class Base_document(models.AbstractModel):
                     user.write({
                         'saved_signature': self.signature
                     })
-                else:
-                    raise ValidationError("Signature not provided.")
+                if record.signature:
+                    FileModification.add_signature_to_pdf(record, self.file, positions.get(child_class_name),
+                                                          record.signature)
+            else :
+                raise ValidationError("Signature not provided.")
 
     @api.onchange('matricule')
     def _onchange_matricule_etudiant(self):
