@@ -6,7 +6,7 @@ from appwrite.services.databases import Databases
 
 client = Client()
 database_id = "670f873d003d1701a4b4"
-collection_id = "670f876a001b72ab6cbf"
+collection_id = "6767e40c000dbb7cbc96"
 
 client.set_endpoint('https://cloud.appwrite.io/v1')  # URL de votre instance Appwrite
 client.set_project('670aa8db002c0cbb4178')  # Votre ID de projet
