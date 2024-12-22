@@ -18,16 +18,18 @@ class CertificatDeScolarite(models.Model):
         domain="[('matricule', '!=', False)]",
         help="Sélectionner le matricule de l'étudiant"
     )
+ 
+    
     filiere = fields.Selection([
-        ('git', 'genie informatique et telecommunications'),
-        ('gesi', 'génie électrique et systemes intelligents'),
-        ('ge', 'génie energétique'),
-        ('gam', 'génie automobile et mécatronique'),
-        ('gm', 'génie mécanique'),
-        ('gp', 'génie des procédés'),
-        ('tco', 'tronc commun'),
-
-    ], required=True)
+            ('gesi', 'génie électrique et systemes intelligents'),
+            ('ge', 'génie energétique'),
+            ('gam', 'génie automobile et mécatronique'),
+            ('gm', 'génie mécanique'),
+            ('gp', 'génie des procédés'),
+            ('tco', 'tronc commun'),
+            ('glo','genie logicielle'),
+            ('grt', 'genie reseau et telecom'),
+        ], required=True)
 
     date_emission = fields.Date(string='Date d\'Emission', default=fields.Datetime.now, required=True)
 

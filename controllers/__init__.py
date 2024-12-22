@@ -1,1 +1,1 @@
-from . import DiplomeController, FileController
+from . import DiplomeController, FileController , CertificatDeScolariteController , ReleveDeNoteController

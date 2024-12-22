@@ -5,14 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4605108f-0c65-4a25-b965-2ac8d3569cd6" name="Changes" comment="decision de auth change">
+      <change afterPath="$PROJECT_DIR$/controllers/CertificatDeScolariteController.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controllers/ReleveDeNoteController.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Enspd_Dms.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Enspd_Dms.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/DiplomeController.py" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/DiplomeController.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/FileController.py" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/FileController.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/Base_document.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/Base_document.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/CertificatDeScolarite.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/CertificatDeScolarite.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/Diplome.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/Diplome.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Etudiant.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/Etudiant.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/ReleveDeNote.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/ReleveDeNote.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Users.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/Users.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/security/ir.model.access.csv" beforeDir="false" afterPath="$PROJECT_DIR$/security/ir.model.access.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/ListeEtudiant.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/ListeEtudiant.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/document_property_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/views/document_property_views.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -65,23 +68,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "/home/lelouch/decrypt.py",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/lelouch/odoo&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/controllers" />
       <recent name="$PROJECT_DIR$/services" />
       <recent name="$PROJECT_DIR$/security" />
       <recent name="$PROJECT_DIR$/models" />
@@ -124,6 +128,19 @@
       <workItem from="1730394242343" duration="23219000" />
       <workItem from="1730449278136" duration="4583000" />
       <workItem from="1730548269859" duration="27892000" />
+      <workItem from="1730644431407" duration="9660000" />
+      <workItem from="1731020515689" duration="1189000" />
+      <workItem from="1731066705042" duration="54000" />
+      <workItem from="1731177812065" duration="7629000" />
+      <workItem from="1731244928263" duration="3431000" />
+      <workItem from="1731267234081" duration="374000" />
+      <workItem from="1731311512816" duration="5026000" />
+      <workItem from="1731504549875" duration="184000" />
+      <workItem from="1733740722771" duration="4264000" />
+      <workItem from="1733826771987" duration="1380000" />
+      <workItem from="1733828648173" duration="244000" />
+      <workItem from="1733853410942" duration="579000" />
+      <workItem from="1733924264287" duration="359000" />
     </task>
     <task id="LOCAL-00001" summary="decision de auth change">
       <option name="closed" value="true" />

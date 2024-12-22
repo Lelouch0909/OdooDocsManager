@@ -10,8 +10,9 @@ _logger = logging.getLogger(__name__)
 
 class DiplomeController(http.Controller):
 
-    @route('/diplomes', type='json', auth='public', methods=['POST'], csrf=False)
+    @route('/diplomes', type='json', auth='public', methods=['POST'], csrf=False, cors='*')
     def get_diplomes(self):
+
         _logger.warning('Request received for diplomas')
         data = json.loads(request.httprequest.data)
         matricule = data.get('matricule')
@@ -34,6 +35,7 @@ class DiplomeController(http.Controller):
             'etablissement': d.etablissement,
             'specialite': d.specialite,
             'cycle': d.cycle,
+            'is_sign': d.is_sign,
             'file_path': d.file_path if d.file_path else None,
         } for d in diplome_records]
         return {'diplomes': diplome_data}

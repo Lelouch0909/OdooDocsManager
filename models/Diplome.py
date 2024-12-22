@@ -21,8 +21,6 @@ class Diplome(models.Model, Base_document):
     date_obtention = fields.Date(string='Date d\'Obtention',
                                  default=lambda self: (datetime.now()))
 
-    etablissement = fields.Char(string='Etablissement', required=True, readonly=True,
-                                default='Ecole Nationale Supérieure Polytechnique de Douala')
 
     mention = fields.Selection([
         ('bien', 'bien'),
